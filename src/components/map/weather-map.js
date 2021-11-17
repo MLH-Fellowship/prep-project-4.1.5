@@ -1,10 +1,11 @@
 import React from "react";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
+import "./weather-map.css";
 
 const WeatherMap = ({ props }) => {
   return (
-    <div>
-      <Map center={[123, -47]} zoom={5}>
+    <div className="map-container">
+      <Map className="map" center={[24.3956, 0]} zoom={2}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
