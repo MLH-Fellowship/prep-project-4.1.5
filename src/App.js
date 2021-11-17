@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import WeatherMap from "./components/map/weather-map";
 import logo from "./mlh-prep.png";
-import process from "process";
 
 function App() {
   const [error, setError] = useState(null);
@@ -41,9 +40,6 @@ function App() {
       );
   }, [city]);
 
-  console.log(process.env.REACT_APP_APIKEY);
-  console.log(lat, long);
-
   if (error) {
     return <div>Error: {error.message}</div>;
   } else {
@@ -72,7 +68,7 @@ function App() {
               </>
             )}
           </div>
-          <WeatherMap Lat={lat} Long={long} />
+          <WeatherMap Lat={lat} Long={long} City={city} />
         </div>
       </>
     );

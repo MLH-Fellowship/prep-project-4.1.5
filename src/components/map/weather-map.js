@@ -11,9 +11,7 @@ const WeatherMap = (props) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Marker position={[props.Lat, props.Long]}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
+          <Popup>{props.City}</Popup>
         </Marker>
       </Map>
     </div>
