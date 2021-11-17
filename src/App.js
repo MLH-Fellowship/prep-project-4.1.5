@@ -4,20 +4,18 @@ import WeatherMap from "./components/map/weather-map";
 import logo from "./mlh-prep.png";
 
 function App() {
+
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [city, setCity] = useState("New York City");
   const [results, setResults] = useState(null);
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
+
+  const BASE_URL=`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_APIKEY}`;
+
   useEffect(() => {
-    fetch(
-      "https://api.openweathermap.org/data/2.5/weather?q=" +
-        city +
-        "&units=metric" +
-        "&appid=" +
-        process.env.REACT_APP_APIKEY
-    )
+    fetch(BASE_URL)
       .then((res) => res.json())
       .then(
         (result) => {
