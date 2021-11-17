@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import WeatherMap from "./components/map/weather-map";
 import logo from "./mlh-prep.png";
+import process from "process";
 
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [city, setCity] = useState("New York City");
   const [results, setResults] = useState(null);
-
+  const [lat, setLat] = useState("");
+  const [long, setLong] = useState("");
   useEffect(() => {
     fetch(
       "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -25,6 +27,11 @@ function App() {
           } else {
             setIsLoaded(true);
             setResults(result);
+
+            const { coord } = result; //long lat
+            const { lat, lon } = coord;
+            setLat(lat);
+            setLong(lon);
           }
         },
         (error) => {
@@ -33,6 +40,9 @@ function App() {
         }
       );
   }, [city]);
+
+  console.log(process.env.REACT_APP_APIKEY);
+  console.log(lat, long);
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -62,7 +72,7 @@ function App() {
               </>
             )}
           </div>
-          <WeatherMap />
+          <WeatherMap Lat={lat} Long={long} />
         </div>
       </>
     );
