@@ -5,7 +5,7 @@ import logo from './mlh-prep.png'
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [city, setCity] = useState("New York City")
+  const [city, setCity] = useState(null)
   const [results, setResults] = useState(null);
 
   useEffect(() => {
@@ -35,7 +35,9 @@ function App() {
       <div>
         <h2>Enter a city below 👇</h2>
         <input
+          id = "autocomplete"
           type="text"
+          placeholder="Search for a city"
           value={city}
           onChange={event => setCity(event.target.value)} />
         <div className="Results">
