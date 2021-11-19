@@ -14,7 +14,7 @@ function App() {
 
   //reverse geolocation to initialize current city
   function initialize(lat, long) {
-    const url = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${long}&limit=1&appid=${process.env.REACT_APP_APIKEY}`;
+    const url = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${long}&limit=1&appid=${process.env.REACT_APP_APIKEY}`;
 
     axios.get(url).then((res) => {
       console.log(res);
