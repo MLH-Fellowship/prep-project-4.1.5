@@ -18,6 +18,9 @@
 
 
 import React, { useState, useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { updateCity } from "../redux/city";
 
 let autoComplete;
 
@@ -59,6 +62,8 @@ async function handlePlaceSelect(updateQuery) {
 }
 
 function SearchLocationInput() {
+  // const {city} = useSelector((state) => state.city);
+  const dispatch = useDispatch()
   const [query, setQuery] = useState("");
   const autoCompleteRef = useRef(null);
 
@@ -73,7 +78,10 @@ function SearchLocationInput() {
     <div className="search-location-input">
       <input
         ref={autoCompleteRef}
-        onChange={event => setQuery(event.target.value)}
+        onChange={event => {
+          setQuery(event.target.value)
+          dispatch(updateCity(event.target.value))
+        }}
         placeholder="Enter a City"
         value={query}
       />
