@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import './App.css';
 import logo from './mlh-prep.png'
+import SearchLocationInput  from "./components/Autocompletion";
 
 function App() {
   const [error, setError] = useState(null);
@@ -34,12 +35,7 @@ function App() {
       <img className="logo" src={logo} alt="MLH Prep Logo"></img>
       <div>
         <h2>Enter a city below 👇</h2>
-        <input
-          id = "autocomplete"
-          type="text"
-          placeholder="Search for a city"
-          value={city}
-          onChange={event => setCity(event.target.value)} />
+        <SearchLocationInput />
         <div className="Results">
           {!isLoaded && <h2>Loading...</h2>}
           {console.log(results)}
