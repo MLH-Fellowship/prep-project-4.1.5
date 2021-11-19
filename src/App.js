@@ -17,7 +17,6 @@ function App() {
     const url = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${long}&limit=1&appid=${process.env.REACT_APP_APIKEY}`;
 
     axios.get(url).then((res) => {
-      console.log(res);
       setCity(res.data[0].name);
     });
   }
@@ -33,27 +32,31 @@ function App() {
   useEffect(() => {
     const BASE_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_APIKEY}`;
 
-    fetch(BASE_URL)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          if (result["cod"] !== 200) {
-            setIsLoaded(false);
-          } else {
-            setIsLoaded(true);
-            setResults(result);
+    if (city) {
+      fetch(BASE_URL)
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            if (result["cod"] !== 200) {
+              setIsLoaded(false);
+            } else {
+              setIsLoaded(true);
+              setResults(result);
 
-            const { coord } = result; //long lat
-            const { lat, lon } = coord;
-            setLat(lat);
-            setLong(lon);
+              const { coord } = result; //long lat
+              const { lat, lon } = coord;
+              setLat(lat);
+              setLong(lon);
+            }
+          },
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
           }
-        },
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      );
+        );
+    } else {
+      return;
+    }
   }, [city]);
 
   if (error) {
@@ -71,7 +74,6 @@ function App() {
           />
           <div className="Results">
             {!isLoaded && <h2>Loading...</h2>}
-            {console.log(results)}
             {isLoaded && results && (
               <>
                 <h3>{results.weather[0].main}</h3>
