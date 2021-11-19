@@ -1,4 +1,4 @@
-body {
+/* body {
     background-color: #133667;
     color: white;
     text-align: center;
@@ -28,5 +28,13 @@ input {
   color: black;
   padding: 10px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-}
+} */
 
+.holder {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    263deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(62, 189, 255, 1) 100%
+  );
+}

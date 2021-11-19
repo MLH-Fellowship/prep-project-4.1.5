@@ -72,6 +72,7 @@ function SearchLocationInput() {
   return (
     <div className="search-location-input">
       <input
+        className="my-10 rounded "
         ref={autoCompleteRef}
         onChange={(event) => handleChange(event.target.value)}
         placeholder="Enter a City"
