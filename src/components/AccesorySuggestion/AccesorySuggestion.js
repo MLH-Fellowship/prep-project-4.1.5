@@ -13,6 +13,15 @@ function AccesorySuggestion(props) {
 		if (props.results.weather[0].main === "Cold") {
 			setSuggestion("Coat 🧥");
 		}
+		if (
+			!(
+				props.results.weather[0].main.includes("Sunny") ||
+				props.results.weather[0].main.includes("Rain") ||
+				props.results.weather[0].main.includes("Cold")
+			)
+		) {
+			setSuggestion(" A smiling face 😉");
+		}
 	}, [props.results.weather[0].main]);
 
 	return (
