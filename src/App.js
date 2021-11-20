@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  //const [city, setCity] = useState(null)
   const [results, setResults] = useState(null);
   const { city } = useSelector((state) => state.city);
 
@@ -48,8 +47,6 @@ function App() {
           alt="MLH Prep Logo"
         ></img>
         <div>
-
-          <h2>{city}</h2>
           <SearchLocationInput />
           <div className="Results">
             {!isLoaded && <h2>Loading...</h2>}

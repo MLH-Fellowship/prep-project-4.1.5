@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import { updateCity } from "../redux/city";
 
 function SearchLocationInput() {
-  // const {city} = useSelector((state) => state.city);
   const dispatch = useDispatch();
   const [query, setQuery] = useState("");
   const autoCompleteRef = useRef(null);
@@ -51,7 +49,7 @@ function SearchLocationInput() {
     updateQuery(query);
     dispatch(updateCity(addressObject.name));
   }
-  // { types: ["(cities)"], fields: ["name"], strictBounds: false }
+
   useEffect(() => {
     loadScript(
       `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_API_KEY}&libraries=places`,
@@ -59,11 +57,6 @@ function SearchLocationInput() {
     );
   }, []);
 
-  const handleChangeAuto = (city) => {
-    setQuery(city);
-    console.log("our auto completed city --------- ", city);
-    dispatch(updateCity(city));
-  };
   const handleChange = (city) => {
     setQuery(city);
     console.log("our  city --------- ", city);
