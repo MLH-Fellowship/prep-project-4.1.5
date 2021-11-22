@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { updateCity } from "../redux/city";
 
+import { getCityCoordinates } from "../API/webServices";
+
 function SearchLocationInput() {
   const dispatch = useDispatch();
   const [query, setQuery] = useState("");
@@ -61,21 +63,13 @@ function SearchLocationInput() {
     );
   }, []);
 
-  const handleChange = (city) => {
+  const handleChange = async (city) => {
     setQuery(city);
     console.log("our  city --------- ", city);
     dispatch(updateCity(city));
-    fetch(
-      `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${process.env.REACT_APP_APIKEY}`
-    )
-    .then(res => res.json())
-    .then(results => {
-      if(results.lentgh === 0) setErr({"message": "Can't Find Location"});
-      else {
-        setLongitude(results[0].lon);
-        setLatitude(results[0].lat);
-      }
-    })
+    getCityCoordinates(city)
+    .then(res => console.log(res));
+
   };
   return (
     <div className="search-location-input">
