@@ -9,6 +9,7 @@ function SearchLocationInput() {
 
   const [latitude, setLatitude] = useState(0);
   const [longitude , setLongitude] = useState(0);
+  const [err, setErr] = useState(null);
 
   let autoComplete;
 
@@ -69,7 +70,11 @@ function SearchLocationInput() {
     )
     .then(res => res.json())
     .then(results => {
-
+      if(results.lentgh === 0) setErr({"message": "Can't Find Location"});
+      else {
+        setLongitude(results[0].lon);
+        setLatitude(results[0].lat);
+      }
     })
   };
   return (
