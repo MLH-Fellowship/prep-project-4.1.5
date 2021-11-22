@@ -67,9 +67,6 @@ function SearchLocationInput() {
     setQuery(city);
     console.log("our  city --------- ", city);
     dispatch(updateCity(city));
-    getCityCoordinates(city)
-    .then(res => console.log(res));
-
   };
   return (
     <div className="search-location-input">

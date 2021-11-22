@@ -10,9 +10,9 @@ export const getCityCoordinates = async (city) => {
             }
             else {
                 resolve({
-                    results
-                    // lon : results[0].lon,
-                    // lat : results[0].lat
+                    results,
+                    lon : results[0].lon,
+                    lat : results[0].lat
                 })
             }
         })
