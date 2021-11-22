@@ -7,6 +7,9 @@ function SearchLocationInput() {
   const [query, setQuery] = useState("");
   const autoCompleteRef = useRef(null);
 
+  const [latitude, setLatitude] = useState(0);
+  const [longitude , setLongitude] = useState(0);
+
   let autoComplete;
 
   const loadScript = (url, callback) => {
@@ -61,6 +64,13 @@ function SearchLocationInput() {
     setQuery(city);
     console.log("our  city --------- ", city);
     dispatch(updateCity(city));
+    fetch(
+      `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${process.env.REACT_APP_APIKEY}`
+    )
+    .then(res => res.json())
+    .then(results => {
+
+    })
   };
   return (
     <div className="search-location-input">
