@@ -70,7 +70,6 @@ function SearchLocationInput() {
         onChange={(event) => handleChange(event.target.value)}
         placeholder="Enter a City"
         value={query}
-        autocomplete={"off"}
       />
     </div>
   );
