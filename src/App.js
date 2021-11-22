@@ -11,6 +11,7 @@ function App() {
   const { city } = useSelector((state) => state.city);
 
   useEffect(() => {
+    // TODO USE THE IMPLEMENTED API CALL IN WEBSERVICES FILE
     fetch(
       "https://api.openweathermap.org/data/2.5/weather?q=" +
         city +
