@@ -9,9 +9,9 @@ function SearchLocationInput() {
   const [query, setQuery] = useState("");
   const autoCompleteRef = useRef(null);
 
-  const [latitude, setLatitude] = useState(0);
-  const [longitude , setLongitude] = useState(0);
-  const [err, setErr] = useState(null);
+  // const [latitude, setLatitude] = useState(0);
+  // const [longitude , setLongitude] = useState(0);
+  // const [err, setErr] = useState(null);
 
   let autoComplete;
 
@@ -71,7 +71,7 @@ function SearchLocationInput() {
   return (
     <div className="search-location-input">
       <input
-        className="my-10 rounded card block pr-10 shadow-xl border-10 rounded-lg py-2 px-4 text-black text-center justify-center mb-3 leading-tight focus:outline-none focus:bg-white focus:border-orange-500 transition duration-300 ease-in-out"
+        className="my-10 rounded card block pr-10 shadow-xl border-10  py-2 px-4 text-black text-center justify-center mb-3 leading-tight focus:outline-none focus:bg-white focus:border-orange-500 transition duration-300 ease-in-out"
         ref={autoCompleteRef}
         onChange={(event) => handleChange(event.target.value)}
         placeholder="Enter a City"
