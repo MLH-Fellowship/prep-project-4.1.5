@@ -41,7 +41,7 @@ function App() {
   } else {
     return (
       //TODO: change the color according to the temp
-      <div className={`flex flex-col h-screen items-center  holder`}>
+      <div className={`flex flex-col h-screen items-center body`}>
         <img
           className="w-44 mt-8 self-start mx-10"
           src={logo}
