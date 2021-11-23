@@ -40,8 +40,8 @@ function App() {
     return <div>Error: {error.message}</div>;
   } else {
     return (
-        <img className="logo" src={logo} alt="MLH Prep Logo"></img>
-        <div>
+       <div>
+          <img className="logo" src={logo} alt="MLH Prep Logo"></img>
           <SearchLocationInput />
           <div className="Results">
             {!isLoaded && <h2>Loading...</h2>}
@@ -58,7 +58,6 @@ function App() {
               </>
             )}
           </div>
-        </div>
       </div>
     );
   }
