@@ -75,6 +75,7 @@ function App() {
               <h2 class="text-4xl text-center text-gray-400 capitalize font-bold mt-10 mb-8">
                 Waiting for a city...
               </h2>
+
             )}
             {console.log(results)}
             {isLoaded && results && <Details />}
