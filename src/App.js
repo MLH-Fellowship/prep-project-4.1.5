@@ -40,7 +40,6 @@ function App() {
     return <div>Error: {error.message}</div>;
   } else {
     return (
-      //TODO: change the color according to the temp
       <div className={`flex flex-col h-screen items-center body`}>
         <img
           className="w-44 mt-8 self-start mx-10"
@@ -48,6 +47,7 @@ function App() {
           alt="MLH Prep Logo"
         ></img>
         <div class="flex flex-wrap justify-center">
+
           <SearchLocationInput />
           <div class="w-full min-h-screen">
             {!isLoaded && <h2 class="text-4xl text-center text-gray-400 capitalize font-bold mt-10 mb-8">Waiting for a city...</h2>}
@@ -94,7 +94,6 @@ function App() {
               </>
             )}
           </div>
-        </div>
       </div>
     );
   }
