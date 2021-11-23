@@ -50,17 +50,49 @@ function App() {
         <div>
           <SearchLocationInput />
           <div className="Results">
-            {!isLoaded && <h2>Loading...</h2>}
+            {!isLoaded && <h2 class="text-4xl text-center text-gray-400 capitalize font-bold mt-10 mb-8">Waiting for a city...</h2>}
             {console.log(results)}
             {isLoaded && results && (
               <>
-                <h3>{results.weather[0].main}</h3>
-                <p>Feels like {results.main.feels_like}°C</p>
-                <i>
-                  <p>
-                    {results.name}, {results.sys.country}
-                  </p>
-                </i>
+                <h1 class="text-6xl text-center text-gray-800 capitalize font-bold mt-10 mb-8">{results.name}, {results.sys.country}</h1>
+                <div class="flex-wrap  flex items-center md:grid grid-cols-2 gap-2 justify-center">
+                  <div class="bg-gradient-to-r flex-auto  w-42 h-42  from-gray-700 to-gray-600 shadow-lg rounded-lg">
+                      <div class="w-4/4 my-2">
+                        <h2 class="text-lg text-center text-gray-200 capitalize">{results.weather[0].description}</h2>
+                        <h2 class="text-lg  text-gray-400  text-center">Temperature {results.main.temp}°C</h2>
+                        <h2 class="text-lg  text-gray-400  text-center">Feels like {results.main.feels_like}°C</h2>
+                        <h2 class="text-lg  text-gray-400  text-center">Humidity {results.main.humidity}%</h2>
+                        <h2 class="text-lg  text-gray-400  text-center">Pressure {results.main.pressure}Pa</h2>
+                      </div>
+                  </div>
+                  <div class="bg-gradient-to-r flex-auto  w-42 h-42  from-gray-700 to-gray-600 shadow-lg rounded-lg">
+                      <div class="w-4/4 my-2">
+                        <h2 class="text-lg text-center text-gray-200 capitalize">{results.weather[0].description}</h2>
+                        <h2 class="text-lg  text-gray-400  text-center">Temperature {results.main.temperature}°C</h2>
+                        <h2 class="text-lg  text-gray-400  text-center">Feels like {results.main.feels_like}°C</h2>
+                        <h2 class="text-lg  text-gray-400  text-center">Humidity {results.main.humidity}%</h2>
+                        <h2 class="text-lg  text-gray-400  text-center">Pressure {results.main.pressure}Pa</h2>
+                      </div>
+                  </div>
+                  <div class="bg-gradient-to-r flex-auto  w-42 h-42  from-gray-700 to-gray-600 shadow-lg rounded-lg">
+                      <div class="w-4/4 my-2">
+                        <h2 class="text-lg text-center text-gray-200 capitalize">{results.weather[0].description}</h2>
+                        <h2 class="text-lg  text-gray-400  text-center">Temperature {results.main.temperature}°C</h2>
+                        <h2 class="text-lg  text-gray-400  text-center">Feels like {results.main.feels_like}°C</h2>
+                        <h2 class="text-lg  text-gray-400  text-center">Humidity {results.main.humidity}%</h2>
+                        <h2 class="text-lg  text-gray-400  text-center">Pressure {results.main.pressure}Pa</h2>
+                      </div>
+                  </div>
+                  <div class="bg-gradient-to-r flex-auto  w-42 h-42  from-gray-700 to-gray-600 shadow-lg rounded-lg">
+                      <div class="w-4/4 my-2">
+                        <h2 class="text-lg text-center text-gray-200 capitalize">{results.weather[0].description}</h2>
+                        <h2 class="text-lg  text-gray-400  text-center">Temperature {results.main.temperature}°C</h2>
+                        <h2 class="text-lg  text-gray-400  text-center">Feels like {results.main.feels_like}°C</h2>
+                        <h2 class="text-lg  text-gray-400  text-center">Humidity {results.main.humidity}%</h2>
+                        <h2 class="text-lg  text-gray-400  text-center">Pressure {results.main.pressure}Pa</h2>
+                      </div>
+                  </div>
+                </div>
               </>
             )}
           </div>

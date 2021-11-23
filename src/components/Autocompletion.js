@@ -71,7 +71,7 @@ function SearchLocationInput() {
   return (
     <div className="search-location-input">
       <input
-        className="my-10 rounded "
+        className="my-10 rounded bg-gray-600 bg-opacity-90 block pr-10 shadow-xl border-10 rounded-lg w-full py-2 px-4 text-black text-center mb-3 leading-tight focus:outline-none focus:bg-white focus:border-orange-500 transition duration-300 ease-in-out"
         ref={autoCompleteRef}
         onChange={(event) => handleChange(event.target.value)}
         placeholder="Enter a City"
