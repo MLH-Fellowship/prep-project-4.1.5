@@ -55,21 +55,21 @@ function App() {
             {isLoaded && results && (
               <>
                 <h1 class="text-6xl text-center text-gray-800 capitalize font-bold mt-10 mb-8">{results.name}, {results.sys.country}</h1>
-                <div class="flex-wrap  flex items-center md:grid grid-cols-2 gap-2 justify-center">
-                  <div class="bg-gradient-to-r flex-auto  w-42 h-42  from-gray-400 to-gray-300 shadow-lg rounded-lg">
+                <div class="flex-wrap flex items-center md:grid grid-cols-2 gap-4 justify-center">
+                  <div class="bg-gradient-to-r flex-auto  w-42 h-42 shadow-lg rounded-lg card">
                       <div class="w-4/4 my-2 h-40">
                         <h2 class="text-lg text-center text-gray-900 capitalize font-bold mb-4">{results.weather[0].description}</h2>
                         <img class="h-20 w-20 mx-auto " src="https://cdn-icons-png.flaticon.com/512/121/121105.png"/>
                       </div>
                   </div>
-                  <div class="bg-gradient-to-r flex-auto  w-42 h-42  from-gray-400 to-gray-300 shadow-lg rounded-lg">
+                  <div class="bg-gradient-to-r flex-auto  w-42 h-42  card shadow-lg rounded-lg">
                       <div class="w-4/4 my-2 h-40">
                         <h2 class="text-lg text-center text-gray-900 capitalize font-bold">Temperature</h2>
                         <h2 class="text-lg text-center text-gray-800 capitalize font-bold">{results.main.temp}°C</h2>
                         <img class="h-20 w-20 mx-auto" src="https://cdn-icons-png.flaticon.com/512/615/615576.png"/>
                       </div>
                   </div>
-                  <div class="bg-gradient-to-r flex-auto  w-42 h-42  from-gray-400 to-gray-300 shadow-lg rounded-lg">
+                  <div class="bg-gradient-to-r flex-auto  w-42 h-42  card shadow-lg rounded-lg">
                       <div class="w-4/4 my-2 h-40 flex-wrap  flex items-center md:grid grid-cols-2 gap-2 justify-center">
                           <div>
                             <h2 class="text-lg text-center text-gray-900 capitalize font-bold">Humidity:<br/>{results.main.humidity}%</h2>
@@ -81,7 +81,7 @@ function App() {
                           </div>
                       </div>
                   </div>
-                  <div class="bg-gradient-to-r flex-auto  w-42 h-42  from-gray-400 to-gray-300 shadow-lg rounded-lg">
+                  <div class="bg-gradient-to-r flex-auto  w-42 h-42  card shadow-lg rounded-lg">
                       <div class="w-4/4 my-2 h-40">
                         <h2 class="text-lg text-center text-gray-900 font-bold">Wind</h2>
                         <h2 class="text-lg text-center text-gray-800 font-bold">{results.wind.speed} m/s</h2>

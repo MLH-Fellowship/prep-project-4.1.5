@@ -38,3 +38,12 @@ input {
     rgba(62, 189, 255, 1) 100%
   );
 }
+
+.card {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    263deg,
+    rgb(212, 209, 209, 0.5) 0%,
+    rgb(173, 175, 177, 0.5) 100%
+  );
+}
