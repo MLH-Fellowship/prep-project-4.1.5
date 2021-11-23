@@ -36,6 +36,7 @@ function App() {
           setError(error);
         }
       );
+      // FIXME: remove dispatch from dependencies 
   }, [city , dispatch]);
 
   const getTheme = () => {
