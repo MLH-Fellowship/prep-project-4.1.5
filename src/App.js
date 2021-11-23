@@ -4,6 +4,9 @@ import WeatherMap from "./components/map/weather-map";
 import logo from "./mlh-prep.png";
 import axios from "axios";
 
+import HourlyWeather from "./Components/HourlyWeather/index";
+import "./Components/HourlyWeather/index.css";
+
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -90,6 +93,13 @@ function App() {
             </div>
           </div>
           <WeatherMap Lat={lat} Long={long} City={city} />
+          <div className="hourly-weather">
+          {!isLoaded && <h2>Loading...</h2>}
+            {console.log(results)}
+            {isLoaded && results && <>
+              <HourlyWeather placename={ results.name } />
+            </>}
+          </div>
         </div>
       </>
     );

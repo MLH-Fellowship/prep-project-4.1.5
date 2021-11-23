@@ -1,0 +1,37 @@
+.hourly-weather {
+    background-color: white;
+    max-width: 225px;
+    margin: 20px auto;
+    border-radius: 8px;
+    color: black;
+    padding: 10px;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
+}
+
+.title {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: bold;
+}
+
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border-radius: 5px;
+}
+
+div.data-row:nth-child(even) {
+    background-color: #D0D0D0;
+}
+
+.hour {
+    padding-left: 10px;
+    display: inline-block;
+}
+
+.temp {
+    padding-right: 10px;
+    display: inline-block;
+}
