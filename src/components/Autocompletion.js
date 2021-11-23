@@ -2,10 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { updateCity } from "../redux/city";
 
+import { getCityCoordinates } from "../API/webServices";
+
 function SearchLocationInput() {
   const dispatch = useDispatch();
   const [query, setQuery] = useState("");
   const autoCompleteRef = useRef(null);
+
+  const [latitude, setLatitude] = useState(0);
+  const [longitude , setLongitude] = useState(0);
+  const [err, setErr] = useState(null);
 
   let autoComplete;
 
@@ -57,7 +63,7 @@ function SearchLocationInput() {
     );
   }, []);
 
-  const handleChange = (city) => {
+  const handleChange = async (city) => {
     setQuery(city);
     console.log("our  city --------- ", city);
     dispatch(updateCity(city));
