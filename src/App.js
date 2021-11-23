@@ -36,7 +36,7 @@ function App() {
           setError(error);
         }
       );
-  }, [city]);
+  }, [city , dispatch]);
 
   const getTheme = () => {
     const temp = results.main.temp;
