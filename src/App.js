@@ -6,6 +6,9 @@ import AccesorySuggestion from "./components/AccesorySuggestion/AccesorySuggesti
 import logo from "./mlh-prep.png";
 import axios from "axios";
 
+import HourlyWeather from "./Components/HourlyWeather/index";
+import "./Components/HourlyWeather/index.css";
+
 function App() {
 	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -64,44 +67,52 @@ function App() {
 		}
 	}, [city]);
 
-	if (error) {
-		return <div>Error: {error.message}</div>;
-	} else {
-		return (
-			<>
-				<img className='logo' src={logo} alt='MLH Prep Logo'></img>
-				<div>
-					<h2>Enter a city below 👇</h2>
-					<input
-						type='text'
-						value={city}
-						onChange={(event) => setCity(event.target.value)}
-					/>
-					<div className='ResultsContainer'>
-						<div className='Results'>
-							{!isLoaded && <h2>Loading...</h2>}
-							{console.log(results)}
-							{isLoaded && results && (
-								<>
-									<h3>{results.weather[0].main}</h3>
-									<p>Feels like {results.main.feels_like}°C</p>
-									<i>
-										<p>
-											{results.name}, {results.sys.country}
-										</p>
-									</i>
-								</>
-							)}
-						</div>
-					</div>
-					<WeatherMap Lat={lat} Long={long} City={city} />
-					<div className='AccesorySuggestion'>
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  } else {
+    return (
+      <>
+        <img className="logo" src={logo} alt="MLH Prep Logo"></img>
+        <div>
+          <h2>Enter a city below 👇</h2>
+          <input
+            type="text"
+            value={city}
+            onChange={(event) => setCity(event.target.value)}
+          />
+          <div className="ResultsContainer">
+            <div className="Results">
+              {!isLoaded && <h2>Loading...</h2>}
+              {console.log(results)}
+              {isLoaded && results && (
+                <>
+                  <h3>{results.weather[0].main}</h3>
+                  <p>Feels like {results.main.feels_like}°C</p>
+                  <i>
+                    <p>
+                      {results.name}, {results.sys.country}
+                    </p>
+                  </i>
+                </>
+              )}
+            </div>
+          </div>
+          <WeatherMap Lat={lat} Long={long} City={city} />
+          <div className="hourly-weather">
+          {!isLoaded && <h2>Loading...</h2>}
+            {console.log(results)}
+            {isLoaded && results && <>
+              <HourlyWeather placename={ results.name } />
+            </>}
+          </div>
+             <div className='AccesorySuggestion'>
 						{results ? <AccesorySuggestion results={results} /> : <h2></h2>}
 					</div>
-				</div>
-			</>
-		);
-	}
+        </div>
+      </>
+    );
+  }
 }
 
 export default App;
