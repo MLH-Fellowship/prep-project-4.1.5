@@ -56,40 +56,36 @@ function App() {
               <>
                 <h1 class="text-6xl text-center text-gray-800 capitalize font-bold mt-10 mb-8">{results.name}, {results.sys.country}</h1>
                 <div class="flex-wrap  flex items-center md:grid grid-cols-2 gap-2 justify-center">
-                  <div class="bg-gradient-to-r flex-auto  w-42 h-42  from-gray-700 to-gray-600 shadow-lg rounded-lg">
-                      <div class="w-4/4 my-2">
-                        <h2 class="text-lg text-center text-gray-200 capitalize">{results.weather[0].description}</h2>
-                        <h2 class="text-lg  text-gray-400  text-center">Temperature {results.main.temp}°C</h2>
-                        <h2 class="text-lg  text-gray-400  text-center">Feels like {results.main.feels_like}°C</h2>
-                        <h2 class="text-lg  text-gray-400  text-center">Humidity {results.main.humidity}%</h2>
-                        <h2 class="text-lg  text-gray-400  text-center">Pressure {results.main.pressure}Pa</h2>
+                  <div class="bg-gradient-to-r flex-auto  w-42 h-42  from-gray-400 to-gray-300 shadow-lg rounded-lg">
+                      <div class="w-4/4 my-2 h-40">
+                        <h2 class="text-lg text-center text-gray-900 capitalize font-bold mb-4">{results.weather[0].description}</h2>
+                        <img class="h-20 w-20 mx-auto " src="https://cdn-icons-png.flaticon.com/512/121/121105.png"/>
                       </div>
                   </div>
-                  <div class="bg-gradient-to-r flex-auto  w-42 h-42  from-gray-700 to-gray-600 shadow-lg rounded-lg">
-                      <div class="w-4/4 my-2">
-                        <h2 class="text-lg text-center text-gray-200 capitalize">{results.weather[0].description}</h2>
-                        <h2 class="text-lg  text-gray-400  text-center">Temperature {results.main.temperature}°C</h2>
-                        <h2 class="text-lg  text-gray-400  text-center">Feels like {results.main.feels_like}°C</h2>
-                        <h2 class="text-lg  text-gray-400  text-center">Humidity {results.main.humidity}%</h2>
-                        <h2 class="text-lg  text-gray-400  text-center">Pressure {results.main.pressure}Pa</h2>
+                  <div class="bg-gradient-to-r flex-auto  w-42 h-42  from-gray-400 to-gray-300 shadow-lg rounded-lg">
+                      <div class="w-4/4 my-2 h-40">
+                        <h2 class="text-lg text-center text-gray-900 capitalize font-bold">Temperature</h2>
+                        <h2 class="text-lg text-center text-gray-800 capitalize font-bold">{results.main.temp}°C</h2>
+                        <img class="h-20 w-20 mx-auto" src="https://cdn-icons-png.flaticon.com/512/615/615576.png"/>
                       </div>
                   </div>
-                  <div class="bg-gradient-to-r flex-auto  w-42 h-42  from-gray-700 to-gray-600 shadow-lg rounded-lg">
-                      <div class="w-4/4 my-2">
-                        <h2 class="text-lg text-center text-gray-200 capitalize">{results.weather[0].description}</h2>
-                        <h2 class="text-lg  text-gray-400  text-center">Temperature {results.main.temperature}°C</h2>
-                        <h2 class="text-lg  text-gray-400  text-center">Feels like {results.main.feels_like}°C</h2>
-                        <h2 class="text-lg  text-gray-400  text-center">Humidity {results.main.humidity}%</h2>
-                        <h2 class="text-lg  text-gray-400  text-center">Pressure {results.main.pressure}Pa</h2>
+                  <div class="bg-gradient-to-r flex-auto  w-42 h-42  from-gray-400 to-gray-300 shadow-lg rounded-lg">
+                      <div class="w-4/4 my-2 h-40 flex-wrap  flex items-center md:grid grid-cols-2 gap-2 justify-center">
+                          <div>
+                            <h2 class="text-lg text-center text-gray-900 capitalize font-bold">Humidity:<br/>{results.main.humidity}%</h2>
+                            <img class="h-10 w-10 mx-auto" src="https://cdn-icons-png.flaticon.com/512/727/727891.png"/>
+                          </div>  
+                          <div>
+                            <h2 class="text-lg text-center text-gray-900 capitalize font-bold">Pressure:<br/>{results.main.pressure} Pa</h2>
+                            <img class="h-10 w-10 mx-auto" src="https://cdn-icons.flaticon.com/png/512/1818/premium/1818069.png?token=exp=1637658477~hmac=62eaaeb38eb15ca9477543880fc0979b"/>
+                          </div>
                       </div>
                   </div>
-                  <div class="bg-gradient-to-r flex-auto  w-42 h-42  from-gray-700 to-gray-600 shadow-lg rounded-lg">
-                      <div class="w-4/4 my-2">
-                        <h2 class="text-lg text-center text-gray-200 capitalize">{results.weather[0].description}</h2>
-                        <h2 class="text-lg  text-gray-400  text-center">Temperature {results.main.temperature}°C</h2>
-                        <h2 class="text-lg  text-gray-400  text-center">Feels like {results.main.feels_like}°C</h2>
-                        <h2 class="text-lg  text-gray-400  text-center">Humidity {results.main.humidity}%</h2>
-                        <h2 class="text-lg  text-gray-400  text-center">Pressure {results.main.pressure}Pa</h2>
+                  <div class="bg-gradient-to-r flex-auto  w-42 h-42  from-gray-400 to-gray-300 shadow-lg rounded-lg">
+                      <div class="w-4/4 my-2 h-40">
+                        <h2 class="text-lg text-center text-gray-900 font-bold">Wind</h2>
+                        <h2 class="text-lg text-center text-gray-800 font-bold">{results.wind.speed} m/s</h2>
+                        <img class="h-20 w-20 mx-auto" src="https://cdn-icons-png.flaticon.com/512/483/483575.png"/>
                       </div>
                   </div>
                 </div>
