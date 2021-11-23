@@ -38,11 +38,31 @@ function App() {
       );
   }, [city]);
 
+  const getTheme = () => {
+    const temp = results.main.temp;
+    switch (temp) {
+      case temp < 10:
+        return "freezing";
+
+      case temp < 20:
+        return "cold";
+
+      case temp < 30:
+        return "warm";
+
+      case temp < 40:
+        return "hot";
+
+      default:
+        return "cold";
+    }
+  };
+
   if (error) {
     return <div>Error: {error.message}</div>;
   } else {
     return (
-      <div className={`flex flex-col h-screen items-center body`}>
+      <div className={`flex flex-col h-screen items-center body ${getTheme()}`}>
         <img
           className="w-44 mt-8 self-start mx-10"
           src={logo}
