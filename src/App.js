@@ -41,11 +41,7 @@ function App() {
   } else {
     return (
       <div className={`flex flex-col h-screen items-center body`}>
-        <img
-          className="w-44 mt-8 self-start mx-10"
-          src={logo}
-          alt="MLH Prep Logo"
-        ></img>
+        <img className="w-44 mt-8 self-start mx-10" src={logo} alt="MLH Prep Logo"></img>
         <div class="flex flex-wrap justify-center">
 
           <SearchLocationInput />
@@ -95,6 +91,7 @@ function App() {
             )}
           </div>
       </div>
+    </div>
     );
   }
 }
