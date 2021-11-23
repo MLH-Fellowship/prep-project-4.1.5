@@ -41,6 +41,7 @@ function App() {
   } else {
     return (
         <img className="logo" src={logo} alt="MLH Prep Logo"></img>
+        <div>
           <SearchLocationInput />
           <div className="Results">
             {!isLoaded && <h2>Loading...</h2>}
