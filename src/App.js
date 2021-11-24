@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-
+import ReactHowler from "react-howler";
 import WeatherMap from "./components/map/weather-map";
 import AccesorySuggestion from "./components/AccesorySuggestion/AccesorySuggestion";
 import logo from "./mlh-prep.png";
 import axios from "axios";
+import Sunny from "./assets/Sunny_Sound.mpeg";
+import Rainy from "./assets/Rainy_Sound.mpeg";
+import Cold from "./assets/Cold_Sound.mpeg";
+import Silence from "./assets/Silence.mp3";
 
 import HourlyWeather from "./Components/HourlyWeather/index";
 import "./Components/HourlyWeather/index.css";
@@ -16,6 +20,7 @@ function App() {
 	const [results, setResults] = useState(null);
 	const [lat, setLat] = useState("");
 	const [long, setLong] = useState("");
+	const [Sound, setSound] = useState({ Silence });
 
 	//reverse geolocation to initialize current city
 	function initialize(lat, long) {
@@ -53,6 +58,18 @@ function App() {
 								const { lat, lon } = coord;
 								setLat(lat);
 								setLong(lon);
+
+								//set Sounds based on weather to passed to the React Howler component
+								if (result.weather[0].main.includes("Rain")) {
+									setSound(Rainy);
+								} else if (result.weather[0].main.includes("Cold")) {
+									setSound(Cold);
+								} else if (result.weather[0].main.includes("Clear")) {
+									setSound(Sunny);
+								} else {
+									setSound(Silence);
+								}
+								//
 							}
 						},
 						(error) => {
@@ -67,52 +84,54 @@ function App() {
 		}
 	}, [city]);
 
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  } else {
-    return (
-      <>
-        <img className="logo" src={logo} alt="MLH Prep Logo"></img>
-        <div>
-          <h2>Enter a city below 👇</h2>
-          <input
-            type="text"
-            value={city}
-            onChange={(event) => setCity(event.target.value)}
-          />
-          <div className="ResultsContainer">
-            <div className="Results">
-              {!isLoaded && <h2>Loading...</h2>}
-              {console.log(results)}
-              {isLoaded && results && (
-                <>
-                  <h3>{results.weather[0].main}</h3>
-                  <p>Feels like {results.main.feels_like}°C</p>
-                  <i>
-                    <p>
-                      {results.name}, {results.sys.country}
-                    </p>
-                  </i>
-                </>
-              )}
-            </div>
-          </div>
-          <WeatherMap Lat={lat} Long={long} City={city} />
-          <div className="hourly-weather">
-          {!isLoaded && <h2>Loading...</h2>}
-            {console.log(results)}
-            {isLoaded && results && <>
-              <HourlyWeather placename={ results.name } />
-            </>}
-          </div>
-             <div className='AccesorySuggestion'>
+	if (error) {
+		return <div>Error: {error.message}</div>;
+	} else {
+		return (
+			<>
+				<img className='logo' src={logo} alt='MLH Prep Logo'></img>
+				<div>
+					<h2>Enter a city below 👇</h2>
+					<input
+						type='text'
+						value={city}
+						onChange={(event) => setCity(event.target.value)}
+					/>
+					<div className='ResultsContainer'>
+						<div className='Results'>
+							{!isLoaded && <h2>Loading...</h2>}
+							{console.log(results)}
+							{isLoaded && results && (
+								<>
+									<h3>{results.weather[0].main}</h3>
+									<p>Feels like {results.main.feels_like}°C</p>
+									<i>
+										<p>
+											{results.name}, {results.sys.country}
+										</p>
+									</i>
+									<ReactHowler src={Sound} playing={true} />
+								</>
+							)}
+						</div>
+					</div>
+					<WeatherMap Lat={lat} Long={long} City={city} />
+					<div className='hourly-weather'>
+						{!isLoaded && <h2>Loading...</h2>}
+						{console.log(results)}
+						{isLoaded && results && (
+							<>
+								<HourlyWeather placename={results.name} />
+							</>
+						)}
+					</div>
+					<div className='AccesorySuggestion'>
 						{results ? <AccesorySuggestion results={results} /> : <h2></h2>}
 					</div>
-        </div>
-      </>
-    );
-  }
+				</div>
+			</>
+		);
+	}
 }
 
 export default App;
