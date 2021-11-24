@@ -43,22 +43,15 @@ function App() {
   const getTheme = () => {
     const temp = results ? results.main.temp : ReduxRes.main.temp;
     //! FIXME: get theme from redux if not from api call
-
-    switch (temp) {
-      case temp < 10:
-        return "freezing";
-
-      case temp < 20:
-        return "cold";
-
-      case temp < 30:
-        return "warm";
-
-      case temp < 40:
-        return "hot";
-
-      default:
-        return "cold";
+    console.log("----------------TEMP", temp);
+    if (temp > 30) {
+      return "hot";
+    } else if (temp > 20) {
+      return "warm";
+    } else if (temp > 10) {
+      return "cold";
+    } else {
+      return "freezing";
     }
   };
 
@@ -66,7 +59,7 @@ function App() {
     return <div>Error: {error.message}</div>;
   } else {
     return (
-      <div className={`flex flex-col h-screen items-center body ${getTheme()}`}>
+      <div className={`flex flex-col h-screen items-center ${getTheme()}`}>
         <img
           className="w-44 mt-8 self-start mx-10"
           src={logo}
