@@ -59,7 +59,7 @@ function App() {
     return <div>Error: {error.message}</div>;
   } else {
     return (
-      <div className={`flex flex-col h-screen items-center ${getTheme()}`}>
+      <div className={`flex flex-col h-full items-center body ${getTheme()}`}>
         <img
           className="w-44 mt-8 self-start mx-10"
           src={logo}
