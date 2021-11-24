@@ -15,13 +15,37 @@ body {
 
 .freezing {
   @apply bg-blue-400;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    263deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(62, 189, 255, 1) 100%
+  );
 }
 .cold {
   @apply bg-blue-800;
+  background: rgb(0, 152, 244);
+  background: linear-gradient(
+    263deg,
+    rgba(0, 152, 244, 1) 0%,
+    rgba(0, 74, 112, 1) 100%
+  );
 }
 .warm {
   @apply bg-yellow-800;
+  background: rgb(244, 204, 0);
+  background: linear-gradient(
+    263deg,
+    rgba(244, 204, 0, 1) 0%,
+    rgba(226, 113, 0, 1) 100%
+  );
 }
 .hot {
   @apply bg-red-800;
+  background: rgb(244, 77, 0);
+  background: linear-gradient(
+    263deg,
+    rgba(244, 77, 0, 1) 0%,
+    rgba(226, 155, 0, 1) 100%
+  );
 }
