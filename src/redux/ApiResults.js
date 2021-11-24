@@ -16,7 +16,7 @@ const initialState = {
     ],
     base: "stations",
     main: {
-      temp: 2.75,
+      temp: 15,
       feels_like: 276.75,
       temp_min: 274.23,
       temp_max: 278.97,
