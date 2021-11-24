@@ -13,15 +13,11 @@ export default function Details() {
       </div>
       <div class="flex flex-wrap justify-center grid-cols-1 sm:grid-cols-2 gap-0 ">
         <div class="flex flex-col w-full m-6 h-42 shadow-lg rounded-lg card overflow-hidden sm:w-52">
-          <div class="w-4/4 my-2 h-40">
-            <h2 class="text-lg text-center text-gray-900 capitalize font-bold mb-6">
+          <div class="w-4/4 my-2 h-40 relative place-items-center">
+            <h2 class="text-lg text-center text-gray-900 capitalize font-bold pb-[-40] ">
               {results.weather[0].description}
             </h2>
-            <img
-              alt=""
-              class="h-20 w-20 mx-auto "
-              src="https://cdn-icons-png.flaticon.com/512/121/121105.png"
-            />
+            <img class="h-30 w-fill object-center absolute top-0 inset-x-0 mx-auto" src={`http://openweathermap.org/img/wn/${results.weather[0].icon}@4x.png`}/>
           </div>
         </div>
         <div class="flex flex-col w-full m-6 h-42 card shadow-lg rounded-lg overflow-hidden sm:w-52">
