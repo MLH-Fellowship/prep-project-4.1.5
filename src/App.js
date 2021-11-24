@@ -10,6 +10,7 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [results, setResults] = useState(null);
   const { city } = useSelector((state) => state.city);
+  const { results: ReduxRes } = useSelector((state) => state.results);
   const dispatch = useDispatch();
   useEffect(() => {
     // TODO USE THE IMPLEMENTED API CALL IN WEBSERVICES FILE
@@ -36,13 +37,29 @@ function App() {
           setError(error);
         }
       );
-  }, [city]);
+    // FIXME: remove dispatch from dependencies
+  }, [city, dispatch]);
+
+  const getTheme = () => {
+    const temp = results ? results.main.temp : ReduxRes.main.temp;
+    //! FIXME: get theme from redux if not from api call
+    console.log("----------------TEMP", temp);
+    if (temp > 30) {
+      return "hot";
+    } else if (temp > 20) {
+      return "warm";
+    } else if (temp > 10) {
+      return "cold";
+    } else {
+      return "freezing";
+    }
+  };
 
   if (error) {
     return <div>Error: {error.message}</div>;
   } else {
     return (
-      <div className={`flex flex-col h-screen items-center body`}>
+      <div className={`flex flex-col h-full items-center body ${getTheme()}`}>
         <img
           className="w-44 mt-8 self-start mx-10"
           src={logo}
@@ -55,7 +72,6 @@ function App() {
               <h2 class="text-4xl text-center text-gray-400 capitalize font-bold mt-10 mb-8">
                 Waiting for a city...
               </h2>
-
             )}
             {console.log(results)}
             {isLoaded && results && <Details />}
