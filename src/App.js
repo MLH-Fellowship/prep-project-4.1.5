@@ -10,6 +10,7 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [results, setResults] = useState(null);
   const { city } = useSelector((state) => state.city);
+  const { results: ReduxRes } = useSelector((state) => state.results);
   const dispatch = useDispatch();
   useEffect(() => {
     // TODO USE THE IMPLEMENTED API CALL IN WEBSERVICES FILE
@@ -36,11 +37,13 @@ function App() {
           setError(error);
         }
       );
-      // FIXME: remove dispatch from dependencies 
-  }, [city , dispatch]);
+    // FIXME: remove dispatch from dependencies
+  }, [city, dispatch]);
 
   const getTheme = () => {
-    const temp = results.main.temp;
+    const temp = results ? results.main.temp : ReduxRes.main.temp;
+    //! FIXME: get theme from redux if not from api call
+
     switch (temp) {
       case temp < 10:
         return "freezing";
@@ -76,7 +79,6 @@ function App() {
               <h2 class="text-4xl text-center text-gray-400 capitalize font-bold mt-10 mb-8">
                 Waiting for a city...
               </h2>
-
             )}
             {console.log(results)}
             {isLoaded && results && <Details />}
