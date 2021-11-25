@@ -15,10 +15,11 @@ import './components/HourlyWeather/index.css';
 
 // contains the varying background images for different types of weather conditions
 const weatherBackgroundImgs = {
-	Clear: "https://images.unsplash.com/photo-1503435538086-21e860401a47?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-	Sunny: 	"https://images.unsplash.com/photo-1465577512280-1c2d41a79862?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2047&q=80",
-	Rain: "https://images.unsplash.com/photo-1496034663057-6245f11be793?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-	Clouds: "https://www.publicdomainpictures.net/pictures/30000/velka/cloudy-day-5.jpg"
+	Clear: "https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png",
+	Sunny: 	"https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png",
+	Rain: "https://www.pngall.com/wp-content/uploads/2017/03/Raindrops.png",
+	Clouds: "https://i.ibb.co/zSYkKBq/cloud2.png",
+  Snow: "https://i.ibb.co/g3CK150/kisspng-pattern-the-winter-snow-5a697dca8fb685-7309573915168629225887-1.png"
 }
 
 
@@ -37,9 +38,9 @@ function App() {
 	function initialize(lat, long) {
 		const url = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${long}&limit=1&appid=${process.env.REACT_APP_APIKEY}`;
 
-		axios.get(url).then((res) => {
-			setCity(res.data[0].name);
-		});
+		// axios.get(url).then((res) => {
+		// 	setCity(res.data[0].name);
+		// });
 	}
 
 	useEffect(() => {
@@ -104,13 +105,14 @@ function App() {
   } else {
     return (
 
-      <div className={`flex flex-col h-full items-center body ${getTheme()}`} style={{backgroundImage: `url(${resultsBackgroundImg})`}}>
+      <div className={`flex flex-col h-full items-center z-0 body ${getTheme()}`}>
+        <img className="w-full z-10 absolute " src={`${resultsBackgroundImg}`} alt="aa"></img>
         <img
-          className="w-44 mt-8 self-start mx-10"
+          className="w-44 mt-8 self-start mx-10 z-30"
           src={logo}
           alt="MLH Prep Logo"
-        ></img>
-        <div class="flex flex-wrap justify-center">
+          ></img>
+        <div class="flex flex-wrap justify-center z-20">
           <SearchLocationInput />
           <div class="w-full min-h-screen">
             {!isLoaded && (
@@ -133,8 +135,8 @@ function App() {
              <div className='AccesorySuggestion'>
 						{results ? <AccesorySuggestion results={results} /> : <h2></h2>}
 					</div>
-      </div>
-
+      </div>      
+      // </div>
     );
   }
 }
