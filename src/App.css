@@ -4,37 +4,53 @@ body {
   text-align: center;
 }
 
-.logo {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 20%;
-  margin-top: 20px;
+.card {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    263deg,
+    rgb(212, 209, 209, 0.5) 0%,
+    rgb(173, 175, 177, 0.5) 100%
+  );
 }
 
-input {
-  padding: 10px;
-  border-radius: 4px;
-  border: 10px;
-  width: 200px;
+.freezing {
+  @apply bg-blue-400;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    263deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(62, 189, 255, 1) 100%
+  );
 }
-
-.Results {
-  background-color: white;
-  max-width: 800px;
-  margin: 0px auto;
-  border-radius: 8px;
-  color: black;
-  padding: 10px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+.cold {
+  @apply bg-blue-800;
+  background: rgb(0, 152, 244);
+  background: linear-gradient(
+    263deg,
+    rgba(0, 152, 244, 1) 0%,
+    rgba(0, 74, 112, 1) 100%
+  );
+}
+.warm {
+  @apply bg-yellow-800;
+  background: rgb(244, 204, 0);
+  background: linear-gradient(
+    263deg,
+    rgba(244, 204, 0, 1) 0%,
+    rgba(226, 113, 0, 1) 100%
+  );
+}
+.hot {
+  @apply bg-red-800;
+  background: rgb(244, 77, 0);
+  background: linear-gradient(
+    263deg,
+    rgba(244, 77, 0, 1) 0%,
+    rgba(226, 155, 0, 1) 100%
+  );
 }
 
 .leaflet-container {
   width: 100vw;
   height: 100vh;
 }
-
-.ResultsContainer {
-  margin: 20px 10px 0px;
-}
-
