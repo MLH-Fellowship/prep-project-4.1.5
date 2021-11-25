@@ -58,7 +58,7 @@ export default function Details() {
               <img
                 alt=""
                 class="h-12 w-12 mx-auto"
-                src="https://cdn-icons.flaticon.com/png/512/1818/premium/1818069.png?token=exp=1637658477~hmac=62eaaeb38eb15ca9477543880fc0979b"
+                src="https://cdn-icons-png.flaticon.com/512/2945/2945800.png"
               />
             </div>
           </div>
