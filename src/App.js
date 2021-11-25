@@ -106,7 +106,7 @@ function App() {
     return (
 
       <div className={`flex flex-col h-full items-center z-0 body ${getTheme()}`}>
-        <img className="w-full z-10 absolute " src={`${resultsBackgroundImg}`} alt="aa"></img>
+        <img className="w-full z-10 absolute " src={`${resultsBackgroundImg}`} alt=""></img>
         <img
           className="w-44 mt-8 self-start mx-10 z-30"
           src={logo}
