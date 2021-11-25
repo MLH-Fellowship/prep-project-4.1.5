@@ -1,13 +1,21 @@
-import { useEffect, useState } from "react";
-import "./App.css";
+import { useEffect, useState } from 'react';
+import './App.css';
 
-import WeatherMap from "./components/map/weather-map";
-import AccesorySuggestion from "./components/AccesorySuggestion/AccesorySuggestion";
-import logo from "./mlh-prep.png";
-import axios from "axios";
+import WeatherMap from './components/map/weather-map';
+import AccesorySuggestion from './components/AccesorySuggestion/AccesorySuggestion';
+import logo from './mlh-prep.png';
+import axios from 'axios';
 
-import HourlyWeather from "./Components/HourlyWeather/index";
-import "./Components/HourlyWeather/index.css";
+import HourlyWeather from './components/HourlyWeather/index';
+import './components/HourlyWeather/index.css';
+
+// contains the varying background images for different types of weather conditions
+const weatherBackgroundImgs = {
+	Clear: "https://images.unsplash.com/photo-1503435538086-21e860401a47?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+	Sunny: 	"https://images.unsplash.com/photo-1465577512280-1c2d41a79862?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2047&q=80",
+	Rain: "https://images.unsplash.com/photo-1496034663057-6245f11be793?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+	Clouds: "https://www.publicdomainpictures.net/pictures/30000/velka/cloudy-day-5.jpg"
+}
 
 function App() {
 	const [error, setError] = useState(null);
@@ -16,6 +24,7 @@ function App() {
 	const [results, setResults] = useState(null);
 	const [lat, setLat] = useState("");
 	const [long, setLong] = useState("");
+	const [resultsBackgroundImg, setResultsBackgroundImg] = useState("");
 
 	//reverse geolocation to initialize current city
 	function initialize(lat, long) {
@@ -49,6 +58,7 @@ function App() {
 								setIsLoaded(true);
 								setResults(result);
 
+								setResultsBackgroundImg(weatherBackgroundImgs[result.weather[0].main]);
 								const { coord } = result; //long lat
 								const { lat, lon } = coord;
 								setLat(lat);
@@ -82,11 +92,12 @@ function App() {
             onChange={(event) => setCity(event.target.value)}
           />
           <div className="ResultsContainer">
-            <div className="Results">
+		  	<div className="Results" style={{backgroundImage: `url(${resultsBackgroundImg})`}}>
               {!isLoaded && <h2>Loading...</h2>}
               {console.log(results)}
               {isLoaded && results && (
                 <>
+				{console.log(resultsBackgroundImg)}
                   <h3>{results.weather[0].main}</h3>
                   <p>Feels like {results.main.feels_like}°C</p>
                   <i>
