@@ -1,10 +1,15 @@
-import { useEffect, useState } from 'react';
-import './App.css';
+import { useEffect, useState } from "react";
+import "./App.css";
 
-import WeatherMap from './components/map/weather-map';
-import AccesorySuggestion from './components/AccesorySuggestion/AccesorySuggestion';
-import logo from './mlh-prep.png';
-import axios from 'axios';
+import ReactHowler from "react-howler";
+import WeatherMap from "./components/map/weather-map";
+import AccesorySuggestion from "./components/AccesorySuggestion/AccesorySuggestion";
+import logo from "./mlh-prep.png";
+import axios from "axios";
+import Sunny from "./assets/Sunny_Sound.mpeg";
+import Rainy from "./assets/Rainy_Sound.mpeg";
+import Cold from "./assets/Cold_Sound.mpeg";
+import Silence from "./assets/Silence.mp3";
 
 import HourlyWeather from './components/HourlyWeather/index';
 import './components/HourlyWeather/index.css';
@@ -24,6 +29,7 @@ function App() {
 	const [results, setResults] = useState(null);
 	const [lat, setLat] = useState("");
 	const [long, setLong] = useState("");
+	const [Sound, setSound] = useState({ Silence });
 	const [resultsBackgroundImg, setResultsBackgroundImg] = useState("");
 
 	//reverse geolocation to initialize current city
@@ -63,6 +69,18 @@ function App() {
 								const { lat, lon } = coord;
 								setLat(lat);
 								setLong(lon);
+
+								//set Sounds based on weather to passed to the React Howler component
+								if (result.weather[0].main.includes("Rain")) {
+									setSound(Rainy);
+								} else if (result.weather[0].main.includes("Cold")) {
+									setSound(Cold);
+								} else if (result.weather[0].main.includes("Clear")) {
+									setSound(Sunny);
+								} else {
+									setSound(Silence);
+								}
+								//
 							}
 						},
 						(error) => {
@@ -76,6 +94,7 @@ function App() {
 			return;
 		}
 	}, [city]);
+
 
 
   if (error) {
@@ -105,6 +124,7 @@ function App() {
                       {results.name}, {results.sys.country}
                     </p>
                   </i>
+                  <ReactHowler src={Sound} playing={true} />
                 </>
               )}
             </div>
@@ -120,10 +140,10 @@ function App() {
              <div className='AccesorySuggestion'>
 						{results ? <AccesorySuggestion results={results} /> : <h2></h2>}
 					</div>
-        </div>
-      </>
-    );
-  }
+				</div>
+			</>
+		);
+	}
 }
 
 export default App;
